@@ -208,10 +208,10 @@ Add the `devDependencies` field to your `package.json`.
 
 ## ESLint
 
-Install ESLint and my personal ESLint config:
+Install ESLint, plugins, and my personal ESLint configs:
 
 ```
-yarn add eslint @samtayl/eslint-config -D
+yarn add eslint eslint-plugin-node @samtayl/eslint-config @samtayl/eslint-config-node -D
 ```
 
 Create the `.eslintrc.js` file.
@@ -228,7 +228,8 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
   },
-  extends: ['@samtayl'],
+  plugins: ['node'],
+  extends: ['@samtayl', '@samtayl/node'],
 };
 ```
 
