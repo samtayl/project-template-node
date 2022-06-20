@@ -1,7 +1,6 @@
 {
   "name": "project-template-node",
   "version": "0.0.0",
-  "private": "true",
   "type": "commonjs",
   "description": "A template for my node projects",
   "keywords": [
@@ -30,8 +29,10 @@
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
     "@samtayl/eslint-config": "^1.1.0",
+    "@samtayl/eslint-config-node": "^1.0.0",
     "cspell": "^6.1.1",
     "eslint": "^8.17.0",
+    "eslint-plugin-node": "^11.1.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.0",
     "prettier": "^2.6.2"

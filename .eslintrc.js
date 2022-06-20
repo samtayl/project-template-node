@@ -5,5 +5,6 @@ module.exports = {
     es6: true,
   },
   parserOptions: {ecmaVersion: 'latest'},
-  extends: ['@samtayl'],
+  plugins: ['node'],
+  extends: ['@samtayl', '@samtayl/node'],
 };
