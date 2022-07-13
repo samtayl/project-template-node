@@ -20,7 +20,7 @@
     "lint:code:fix": "yarn lint:code --fix",
     "lint:other": "prettier --check \"**/*.{json,md,yml}\"",
     "lint:other:fix": "yarn lint:other --write",
-    "lint:spelling": "cspell \"**\" --config .cspellrc.js",
+    "lint:spelling": "cspell \"**\"",
     "lint:staged": "lint-staged",
     "lint:commit": "commitlint",
     "postinstall": "husky install"
