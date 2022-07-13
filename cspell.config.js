@@ -8,11 +8,12 @@ module.exports = {
   words: [
     'commitlint',
     'commitlintrc',
-    'cspellrc',
     'lintstagedrc',
     'packagejson',
     'readmemd',
     'samtayl',
+    'WXYZ',
+    'wxyz',
   ],
   ignorePaths: [
     '.husky',

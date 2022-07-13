@@ -22,7 +22,7 @@
 ## Prerequisites
 
 - Git
-- Node (v16+)
+- Node (v14+)
 - Yarn (v2+)
 
 ## git
@@ -89,7 +89,7 @@ Create the `package.json` file.
 
 Populate it with:
 
-```JSON
+```json
 {
   "name": "",
   "version": "",
@@ -139,8 +139,8 @@ Prepend this file with:
 yarnPath: .yarn/releases/yarn-x.y.z.cjs
 ```
 
-It will also add the `packageManager` field (and a comma to the preceding
-field) to `package.json`:
+It will also add the `packageManager` field (and a comma to the preceding field)
+to `package.json`:
 
 ```diff
 {
@@ -152,8 +152,8 @@ field) to `package.json`:
 ```
 
 And it will also, delightfully, remove the empty fields: `scripts`,
-`dependencies`, `devDependencies`, `peerDependencies`, despite being
-placed there intentionally:
+`dependencies`, `devDependencies`, and `peerDependencies`, despite being placed
+there intentionally:
 
 ```diff
 {
@@ -194,6 +194,28 @@ Populate it with:
 node_modules
 ```
 
+Choose the minimum version of node required for your project, preferably a
+version with long-term support (LTS), either active or maintenance. See the
+[node releases page](https://nodejs.org/en/about/releases/) for more
+information.
+
+Add your chosen version to the `engines` field of your `package.json`. See the
+[node semver versions page](https://github.com/npm/node-semver#versions) for
+information on how to format the version range.
+
+```diff
+{
+  ...
+  "exports": "",
+-  "engines": {},
++  "engines": {
++    "node": ">=x.y.z"
++  },
+  "packageManager": "yarn@x.y.z"
+  ...
+}
+```
+
 Add the `devDependencies` field to your `package.json`.
 
 ```diff
@@ -201,7 +223,7 @@ Add the `devDependencies` field to your `package.json`.
   ...
   "exports": "",
 + "devDependencies": {},
-  "engines": {},
+  "engines": {
   ...
 }
 ```
@@ -218,22 +240,40 @@ Create the `.eslintrc.js` file.
 
 Populate it with:
 
-```JS
+<!-- prettier-ignore -->
+```js
 module.exports = {
   root: true,
-  env: {
-    node: true,
-    es6: true,
-  },
-  parserOptions: {
-    ecmaVersion: 'latest',
-  },
-  plugins: ['node'],
-  extends: ['@samtayl', '@samtayl/node'],
+  extends: [
+    '@samtayl',
+    '@samtayl/node',
+  ],
 };
 ```
 
-Add the `scripts` field and code linting scripts to your package.json.
+See
+[eslint's language options](https://eslint.org/docs/latest/user-guide/configuring/language-options)
+to ensure eslint can parse the minimum version of node your project requires.
+See [node.green](https://node.green/) to find which version of ECMAScript your
+version supports.
+
+Add these to your `.eslintrc.js` file.
+
+<!-- prettier-ignore -->
+```diff
+module.exports = {
+  ...
+  ],
++  env: {
++    esWXYZ: true,
++  },
++  parserOptions: {
++    ecmaVersion: 'wxyz',
++  },
+};
+```
+
+Add the `scripts` field and code linting scripts to your `package.json`.
 
 ```diff
 {
@@ -243,7 +283,7 @@ Add the `scripts` field and code linting scripts to your package.json.
 +   "lint:code": "eslint --ext .js .",
 +   "lint:code:fix": "yarn lint:code --fix"
 +  },
-  "devDependencies": {},
+  "devDependencies": {
   ...
 }
 ```
@@ -258,15 +298,17 @@ yarn add prettier -D
 
 Create the `.prettierrc.js` file.
 
-```JS
+<!-- prettier-ignore -->
+```js
 module.exports = {
   singleQuote: true,
   trailingComma: 'all',
   bracketSpacing: false,
+  proseWrap: 'always',
 };
 ```
 
-Add other linting scripts to your package.json.
+Add other linting scripts to your `package.json`.
 
 ```diff
 {
@@ -290,15 +332,23 @@ Install CSpell:
 yarn add cspell -D
 ```
 
-Create the `.cspellrc.js` file.
+Create the `cspell.config.js` file.
 
 Populate it with:
 
+<!-- prettier-ignore -->
 ```js
 module.exports = {
   language: 'en-GB',
-  dictionaries: ['typescript', 'node', 'npm'],
-  words: ['cspellrc', 'commitlint', 'samtayl'],
+  dictionaries: [
+    'typescript',
+    'node',
+    'npm',
+  ],
+  words: [
+    'commitlint',
+    'samtayl',
+  ],
 };
 ```
 
@@ -312,7 +362,7 @@ Add a spelling linting script to your `package.json`.
     "lint:other": "prettier --check \"**/*.{json,md,yml}\"",
 -   "lint:other:fix": "yarn lint:other --write"
 +   "lint:other:fix": "yarn lint:other --write",
-+   "lint:spelling": "cspell \"**\" --config .cspellrc.js"
++   "lint:spelling": "cspell \"**\""
   }
   ...
 }
@@ -330,6 +380,7 @@ Create the `.lintstagedrc.js` file.
 
 Populate it with:
 
+<!-- prettier-ignore -->
 ```js
 module.exports = {
   '*.js': 'yarn lint:code:fix',
@@ -338,7 +389,7 @@ module.exports = {
 };
 ```
 
-Add a staging area linting script to your package.json.
+Add a staging area linting script to your `package.json`.
 
 ```diff
 {
@@ -346,8 +397,8 @@ Add a staging area linting script to your package.json.
   "scripts": {
     ...
     "lint:other:fix": "yarn lint:other --write",
--   "lint:spelling": "cspell \"**\" --config .cspellrc.js"
-+   "lint:spelling": "cspell \"**\" --config .cspellrc.js",
+-   "lint:spelling": "cspell \"**\""
++   "lint:spelling": "cspell \"**\"",
 +   "lint:staged": "lint-staged"
   }
   ...
@@ -356,7 +407,7 @@ Add a staging area linting script to your package.json.
 
 ## commitlint
 
-Install commitlint cli, and the conventional commits config:
+Install the commitlint cli, and the conventional commits config:
 
 ```
 yarn add @commitlint/cli @commitlint/config-conventional -D
@@ -366,20 +417,21 @@ Create the `.commitlintrc.js` file.
 
 Populate it with:
 
+<!-- prettier-ignore -->
 ```js
 module.exports = {
   extends: ['@commitlint/config-conventional'],
 };
 ```
 
-Add a commit message linting script to your package.json.
+Add a commit message linting script to your `package.json`.
 
 ```diff
 {
   ...
   "scripts": {
     ...
-    "lint:spelling": "cspell \"**\" --config .cspellrc.js",
+    "lint:spelling": "cspell \"**\"",
 -   "lint:staged": "lint-staged"
 +   "lint:staged": "lint-staged",
 +   "lint:commit": "commitlint"
@@ -396,7 +448,7 @@ Install husky:
 yarn add husky -D
 ```
 
-Append a postinstall script to your package.json.
+Append a postinstall script to your `package.json`.
 
 ```diff
 {
@@ -430,7 +482,7 @@ git commit -m "feat: initial commit"
 git branch -M main
 ```
 
-Create a remote repository. GitHub, BitBucket, GitLab are widley used
+Create a remote repository. GitHub, BitBucket, and GitLab are widley used
 providers, but self-hosting is also available.
 
 Add your remote to git:
