@@ -5,10 +5,10 @@ module.exports = {
     '@samtayl/node',
   ],
   env: {
-    es6: true,
+    es2020: true,
   },
   parserOptions: {
-    ecmaVersion: 'latest',
+    ecmaVersion: '2020',
   },
   plugins: ['node'],
 };
