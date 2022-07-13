@@ -639,22 +639,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@samtayl/eslint-config-node@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@samtayl/eslint-config-node@npm:1.0.0"
+"@samtayl/eslint-config-node@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@samtayl/eslint-config-node@npm:1.1.0"
   peerDependencies:
     eslint: ^8.17.0
     eslint-plugin-node: ^11.1.0
-  checksum: 297286dad1a3e60290d72ab8a2570946e1894663b7763e1ce6013f259b602f692636efdd04c2f1c0b2158c9ef8778730d222ccf1838f453d4f3d55130e78df2c
+  checksum: 4f9582d03a9027a0d7f9ab737d37bc8ad2a683da3b0adbd6b37b59efc1f6eaa5b682697082467e2a25f554fa14b13939f5917603085755e7163e780441b774d9
   languageName: node
   linkType: hard
 
-"@samtayl/eslint-config@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@samtayl/eslint-config@npm:1.1.0"
+"@samtayl/eslint-config@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@samtayl/eslint-config@npm:1.2.0"
   peerDependencies:
     eslint: ^8.17.0
-  checksum: f959685921a2baed79768f3863bee4065fb87666c62eab2bbd522bc601585e139e163b0161d2d80fb8c28b765369be221e0c128da47c1a52a2e66506890e2bc8
+  checksum: 73f7977da366961f7c45fbadc67d0f42cfeea2bea17b5537ec0b6a390e6ea40a143308720d138d3449907f86e2607e4867463b18b84a22171375c29c0a694bcc
   languageName: node
   linkType: hard
 
@@ -2638,8 +2638,8 @@ __metadata:
   dependencies:
     "@commitlint/cli": ^17.0.2
     "@commitlint/config-conventional": ^17.0.2
-    "@samtayl/eslint-config": ^1.1.0
-    "@samtayl/eslint-config-node": ^1.0.0
+    "@samtayl/eslint-config": ^1.2.0
+    "@samtayl/eslint-config-node": ^1.1.0
     cspell: ^6.1.1
     eslint: ^8.17.0
     eslint-plugin-node: ^11.1.0

@@ -1,10 +1,14 @@
 module.exports = {
   root: true,
+  extends: [
+    '@samtayl',
+    '@samtayl/node',
+  ],
   env: {
-    node: true,
     es6: true,
   },
-  parserOptions: {ecmaVersion: 'latest'},
+  parserOptions: {
+    ecmaVersion: 'latest',
+  },
   plugins: ['node'],
-  extends: ['@samtayl', '@samtayl/node'],
 };
