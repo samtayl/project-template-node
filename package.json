@@ -16,7 +16,7 @@
     "url": "https://github.com/samtayl/project-template-node"
   },
   "scripts": {
-    "lint:code": "eslint --ext .js .",
+    "lint:code": "eslint -c eslint.config.js --ext .js .",
     "lint:code:fix": "yarn lint:code --fix",
     "lint:other": "prettier --check \"**/*.{json,md,yml}\"",
     "lint:other:fix": "yarn lint:other --write",
