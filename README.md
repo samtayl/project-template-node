@@ -236,7 +236,7 @@ Install ESLint, plugins, and my personal ESLint configs:
 yarn add eslint eslint-plugin-node @samtayl/eslint-config @samtayl/eslint-config-node -D
 ```
 
-Create the `.eslintrc.js` file.
+Create the `eslint.config.js` file.
 
 Populate it with:
 
@@ -257,7 +257,7 @@ to ensure eslint can parse the minimum version of node your project requires.
 See [node.green](https://node.green/) to find which version of ECMAScript your
 version supports.
 
-Add these to your `.eslintrc.js` file.
+Add these to your `eslint.config.js` file.
 
 <!-- prettier-ignore -->
 ```diff
@@ -280,7 +280,7 @@ Add the `scripts` field and code linting scripts to your `package.json`.
   ...
   "exports": "",
 + "scripts": {
-+   "lint:code": "eslint --ext .js .",
++   "lint:code": "eslint -c eslint.config.js --ext .js .",
 +   "lint:code:fix": "yarn lint:code --fix"
 +  },
   "devDependencies": {
@@ -296,7 +296,7 @@ Install prettier:
 yarn add prettier -D
 ```
 
-Create the `.prettierrc.js` file.
+Create the `prettier.config.js` file.
 
 <!-- prettier-ignore -->
 ```js
@@ -314,7 +314,7 @@ Add other linting scripts to your `package.json`.
 {
   ...
   "scripts": {
-    "lint:code": "eslint --ext .js .",
+    "lint:code": "eslint -c eslint.config.js --ext .js .",
 -   "lint:code:fix": "yarn lint:code --fix"
 +   "lint:code:fix": "yarn lint:code --fix",
 +   "lint:other": "prettier --check \"**/*.{json,md,yml}\"",
@@ -376,7 +376,7 @@ Install lint-staged:
 yarn add lint-staged -D
 ```
 
-Create the `.lintstagedrc.js` file.
+Create the `lint-staged.config.js` file.
 
 Populate it with:
 
@@ -413,7 +413,7 @@ Install the commitlint cli, and the conventional commits config:
 yarn add @commitlint/cli @commitlint/config-conventional -D
 ```
 
-Create the `.commitlintrc.js` file.
+Create the `commitlint.config.js` file.
 
 Populate it with:
 

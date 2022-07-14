@@ -7,8 +7,6 @@ module.exports = {
   ],
   words: [
     'commitlint',
-    'commitlintrc',
-    'lintstagedrc',
     'packagejson',
     'readmemd',
     'samtayl',
