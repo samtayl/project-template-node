@@ -1,5 +1,5 @@
 module.exports = {
-  '*.js': 'yarn lint:code:fix',
-  '*.{json,md,yaml}': 'yarn lint:other:fix',
-  '*': 'yarn lint:spelling',
+  '*.js': 'eslint -c eslint.config.js',
+  '*.{json,md,yaml}': 'prettier --check',
+  '*': 'cspell',
 };
